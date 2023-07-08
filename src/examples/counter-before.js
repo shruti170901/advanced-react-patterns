@@ -32,8 +32,19 @@ function useCounter() {
   if (context === undefined) {
     throw new Error(`useCounter must be used within a CounterProvider`)
   }
+  // const dispatch = context[1]
+  // const increment = React.useCallback(
+  //   () => dispatch({type: 'INCREMENT'}),
+  // [dispatch])
+  // const decrement = React.useCallback(
+  //   () => dispatch({type: 'DECREMENT'}),
+  // [dispatch])
+
+  // return {context, increment, decrement}
   return context
 }
+// const increment = (dispatch) => dispatch({type: 'INCREMENT'})
+// const decrement = (dispatch) => dispatch({type: 'DECREMENT'})
 
 // export {CounterProvider, useCounter}
 
@@ -44,6 +55,7 @@ function Counter() {
   const [state, dispatch] = useCounter()
   const increment = () => dispatch({type: 'increment'})
   const decrement = () => dispatch({type: 'decrement'})
+  // const {state, increment, decrement} = useCounter()
   return (
     <div>
       <div>Current Count: {state.count}</div>
